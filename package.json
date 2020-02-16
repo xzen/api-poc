@@ -1,0 +1,33 @@
+{
+  "name": "api-poc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "lint": "eslint ./app* index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ours1project/api-poc.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ours1project/api-poc/issues"
+  },
+  "homepage": "https://github.com/ours1project/api-poc#readme",
+  "dependencies": {
+    "express": "4.17.1",
+    "mongoose": "5.9.1",
+    "node-validator": "0.1.27"
+  },
+  "devDependencies": {
+    "eslint": "6.8.0",
+    "eslint-config-standard": "14.1.0",
+    "eslint-plugin-import": "2.20.1",
+    "eslint-plugin-node": "11.0.0",
+    "eslint-plugin-promise": "4.2.1",
+    "eslint-plugin-standard": "4.0.1"
+  }
+}

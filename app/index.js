@@ -1,5 +1,5 @@
 const express = require('express')
-// const routes = require('./controllers/routes.js')
+const routes = require('./controllers/routes.js')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const cors = require('cors')
@@ -61,7 +61,7 @@ class Server {
    */
   routes () {
     // new routes.users.Create(this.app, this.connect)
-    // new routes.users.Show(this.app, this.connect)
+    new routes.users.Show(this.app, this.connect)
     // new routes.users.Update(this.app)
     // new routes.users.Delete(this.app)
 

@@ -1,6 +1,6 @@
 const UsersModel = require('../../models/users-merged')
 
-class Show {
+class Create {
   /**
    * @constructor
    * @param {Object} app
@@ -18,31 +18,23 @@ class Show {
    * Middleware
    */
   middleware () {
-    this.app.get('/users/show/:id', (req, res) => {
+    this.app.post('/users/create', (req, res) => {
       try {
-        if (!req.params || !req.params.id.length) {
-          res.status(404).json(this.statusCode['404'])
-        }
+        const userModel = new this.UsersModel(req.body)
 
-        this.UsersModel.findById(req.params.id).then(user => {
-          if (!user) {
-            res.status(200).json({})
-
-            return
-          }
-
-          res.status(200).json(user)
-        }).catch((err) => {
+        userModel.save().then(user => {
+          res.status(200).json(user || {})
+        }).catch(err => {
           res.status(500).json({
             code: 500,
             message: err
           })
         })
       } catch (err) {
-        console.error(`[ERROR] user/show/:id -> ${err}`)
+        console.error(`[ERROR] user/create/:id -> ${err}`)
         res.status(500).json({
           code: 500,
-          message: err
+          message: 'Internal Server Error'
         })
       }
     })
@@ -56,4 +48,4 @@ class Show {
   }
 }
 
-module.exports = Show
+module.exports = Create

@@ -22,7 +22,7 @@ const Schema = new mongoose.Schema({
     default: 0
   }
 }, {
-  collection: 'reviews',
+  collection: 'all',
   minimize: false,
   versionKey: false
 }).set('toJSON', {

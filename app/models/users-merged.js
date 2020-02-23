@@ -74,7 +74,7 @@ const Schema = new mongoose.Schema({
   },
   reviews: [Review]
 }, {
-  collection: 'users',
+  collection: 'users-updated',
   minimize: false,
   versionKey: false
 }).set('toJSON', {

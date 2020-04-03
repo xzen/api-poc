@@ -72,6 +72,16 @@ const Schema = new mongoose.Schema({
     type: Number,
     default: 0
   },
+  satisfaction_score: {
+    postif: {
+      type: Number,
+      default: 0
+    },
+    negatif: {
+      type: Number,
+      default: 0
+    }
+  },
   reviews: [Review]
 }, {
   collection: 'users-updated',

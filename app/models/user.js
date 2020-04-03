@@ -70,6 +70,14 @@ const Schema = new mongoose.Schema({
   compliment_photos: {
     type: Number,
     default: 0
+  },
+  score_positif: {
+    type: Number,
+    default: 0
+  },
+  score_negatif: {
+    type: Number,
+    default: 0
   }
 }, {
   collection: 'users',

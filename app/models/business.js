@@ -27,13 +27,13 @@ const Schema = new mongoose.Schema({
     default: []
   },
   hours: {
-    Monday: Date,
-    Tuesday: Date,
-    Friday: Date,
-    Wednesday: Date,
-    Thursday: Date,
-    Sunday: Date,
-    Saturday: Date
+    Monday: String,
+    Tuesday: String,
+    Friday: String,
+    Wednesday: String,
+    Thursday: String,
+    Sunday: String,
+    Saturday: String
   },
   reviews: [Review]
 }, {

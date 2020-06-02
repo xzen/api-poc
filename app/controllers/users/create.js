@@ -1,4 +1,4 @@
-const UsersModel = require('../../models/users-merged')
+const UsersModel = require('../../models/user')
 
 class Create {
   /**
@@ -31,7 +31,6 @@ class Create {
           })
         })
       } catch (err) {
-        console.error(`[ERROR] user/create/:id -> ${err}`)
         res.status(500).json({
           code: 500,
           message: 'Internal Server Error'

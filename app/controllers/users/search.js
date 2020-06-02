@@ -1,6 +1,6 @@
 const UsersModel = require('../../models/user')
 
-class Show {
+class Search {
   /**
    * @constructor
    * @param {Object} app
@@ -18,13 +18,23 @@ class Show {
    * Middleware
    */
   middleware () {
-    this.app.get('/users/show/:id', (req, res) => {
-      try {
-        if (!req.params || !req.params.id.length) {
-          res.status(404).json(this.statusCode['404'])
+    this.app.post('/users/search', (req, res) => {
+      const pipe = [];
+
+      if (req.body.user_id || req.body.business_id) {
+        if (req.body.user_id) {
+          pipe.push({$match: {user_id: req.body.user_id}})
         }
 
-        this.UsersModel.findById(req.params.id).then(user => {
+        if (req.body.business_id) {
+          pipe.push({$match: {business_id: req.body.business_id}})
+        }
+      }
+
+      pipe.push({ $limit: req.body.limit || 10})
+
+      try {
+        this.UsersModel.aggregate(pipe).then(user => {
           if (!user) {
             res.status(200).json({})
 
@@ -33,12 +43,14 @@ class Show {
 
           res.status(200).json(user)
         }).catch((err) => {
+          console.log(err)
           res.status(500).json({
             code: 500,
             message: err
           })
         })
       } catch (err) {
+        console.log(err)
         res.status(500).json({
           code: 500,
           message: err
@@ -55,4 +67,4 @@ class Show {
   }
 }
 
-module.exports = Show
+module.exports = Search

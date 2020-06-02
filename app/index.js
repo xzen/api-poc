@@ -60,10 +60,12 @@ class Server {
    * routes
    */
   routes () {
+    // Users
     new routes.users.Create(this.app, this.connect)
     new routes.users.Show(this.app, this.connect)
-    // new routes.users.Update(this.app)
-    // new routes.users.Delete(this.app)
+    new routes.users.Search(this.app, this.connect)
+
+    //  Business
     new routes.business.CreateBusiness(this.app, this.connect)
     new routes.business.ShowBusiness(this.app, this.connect)
 

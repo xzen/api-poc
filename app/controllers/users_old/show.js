@@ -1,4 +1,4 @@
-const UsersModel = require('../../models/user')
+const UsersModel = require('../../models/users-merged')
 
 class Show {
   /**
@@ -39,6 +39,7 @@ class Show {
           })
         })
       } catch (err) {
+        console.error(`[ERROR] user/show/:id -> ${err}`)
         res.status(500).json({
           code: 500,
           message: err
